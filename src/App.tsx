@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-// import LoginForm from "./pages/login"
+import LoginForm from "./pages/login"
 
 import CMSlogin from "./pages/CMSlogin"
 
@@ -31,8 +31,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<LoginForm />} />   */}
         <Route path="/" element={<CMSlogin />} /> 
+        <Route path="/cmslogin" element={<LoginForm />} />  
         <Route path="/dashboard" element={<Layout />} />
         <Route path="/animation" element={<RainbowAnimation />} />
       </Routes>
