@@ -16,6 +16,10 @@ export default function LoginForm() {
     navigate("/dashboard")
   }
 
+  const handleAnimationSpin = () => {
+    navigate("/animation")
+  }
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#f5f5f5] px-4">
       <Card className="w-full max-w-md border border-gray-200 shadow-sm rounded-lg">
@@ -59,10 +63,11 @@ export default function LoginForm() {
 
           {/* Google Login */}
           <Button
+            onClick={handleAnimationSpin}
             variant="outline"
             className="w-full h-11 bg-white hover:bg-gray-50"
           >
-            Login with Google
+            Animation Spin
           </Button>
 
           {/* Signup */}

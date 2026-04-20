@@ -43,6 +43,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useNavigate } from "react-router-dom"
 
 const platformItems = [
   {
@@ -150,6 +151,12 @@ export function AppSidebar() {
     ? [...baseProjectItems, ...extraProjectItems]
     : baseProjectItems
 
+  const navigate = useNavigate()
+
+  const backToLogin = () =>{
+    navigate("/")
+  }
+
   return (
     <Sidebar
       collapsible="icon"
@@ -218,7 +225,7 @@ export function AppSidebar() {
 
                 <DropdownMenuSeparator />
 
-                <DropdownMenuItem className="text-red-600 focus:text-red-600">
+                <DropdownMenuItem className="text-red-600 focus:text-red-600" onClick={backToLogin}>
                   <LogOut className="mr-2 h-4 w-4" />
                   <span>Logout</span>
                 </DropdownMenuItem>

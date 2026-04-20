@@ -1,0 +1,35 @@
+// styles/animated-spin.scss
+
+$margin-left: 180px;
+
+._12dd79 {
+}
+
+._bjy7df {
+  display: flex;
+}
+
+._8lx73k {
+  align-items: center;
+}
+
+._7m974k {
+  justify-content: center;
+}
+
+._atufsa {
+  display: grid;
+}
+// ._zwxibg {
+//     --tw-translate-y: calc(2 / 1.8 * 100%);
+//     translate: var(--tw-translate-x) var(--tw-translate-y);
+// }
+// Animation
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
