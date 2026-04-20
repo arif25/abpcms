@@ -74,7 +74,7 @@ export default function LoginForm() {
           <p className="text-center text-sm text-gray-500">
             Don't have an account?{" "}
             <span
-              onClick={() => navigate("/signup")}
+              onClick={() => navigate("/cmslogin")}
               className="underline cursor-pointer text-gray-700"
             >
               Sign up
