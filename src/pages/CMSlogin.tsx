@@ -142,8 +142,8 @@ export default function LoginPage() {
         </Button>
 
         <div className="text-center mt-4">
-          <Button variant="outline" className="w-full border-0">
-          Login
+          <Button variant="outline" className="w-full border-0 cursor-pointer">
+          Login as Admin
         </Button>
 
         </div>
