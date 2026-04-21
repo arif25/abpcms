@@ -31,7 +31,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginForm />} /> 
+        {/* <Route path="/" element={<LoginForm />} /> */}
+        <Route path="/" element={<CMSlogin />} />  
         <Route path="/cmslogin" element={<CMSlogin />} />  
         <Route path="/dashboard" element={<Layout />} />
         <Route path="/animation" element={<RainbowAnimation />} />
