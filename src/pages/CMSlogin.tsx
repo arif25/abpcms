@@ -8,11 +8,12 @@ import { Separator } from "@/components/ui/separator";
 import logo from "@/assets/logo-sandesh-cms.svg" ;
 
 import { X } from "lucide-react"
-
+import { Eye, EyeOff } from "lucide-react"
 
 export default function LoginPage() {
   const [mode, setMode] = useState<"ABP" | "TT">("ABP")
   const [username, setUsername] = useState("")
+  const [showPass, setShowPass] = useState(false)
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
@@ -60,12 +61,6 @@ export default function LoginPage() {
           <Separator className="flex-1 bg-[#7F8EA3]" />
         </div>
 
-        {/* Form */}
-        {/* <div className="space-y-8 mt-8"> */}
-          {/* <Input placeholder="Username" className="h-10 text-sm" /> */}
-          {/* <Input type="password" placeholder="Password" className="h-10 text-sm" />           */}
-        {/* </div> */}
-
         {/* === Form === */}
         <div className="space-y-8 mt-8">
           <div className="relative">
@@ -86,11 +81,21 @@ export default function LoginPage() {
             )}
           </div>
           {/* Password */}
-          <Input
-            type="password"
-            placeholder="Password"
-            className="h-10 text-sm"
-          />
+           <div className="relative">
+            <Input
+              type={showPass ? "text" : "password"}
+              placeholder="Password"
+              className="h-10 text-sm pr-10"
+            />
+
+            <button
+              type="button"
+              onClick={() => setShowPass(!showPass)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+            >
+              {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
+          </div>
         </div>
 
 

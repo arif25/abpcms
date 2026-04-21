@@ -34,13 +34,13 @@ import {
   Plus,
 } from "lucide-react"
 
-type SorterItem = {
+type SorterItem = { 
   id: number
-  sorterName: string
+  sorterName: string   
   displayName: string
   status: "active" | "inactive"
   locked?: boolean
-  lastModified: string
+  lastModified: string 
 }
 
 const allSorterData: SorterItem[] = [
