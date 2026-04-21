@@ -12,8 +12,25 @@ import { Eye, EyeOff } from "lucide-react"
 
 export default function LoginPage() {
   const [mode, setMode] = useState<"ABP" | "TT">("ABP")
-  const [username, setUsername] = useState("")
   const [showPass, setShowPass] = useState(false)
+
+  const [value, setValue] = useState("")
+  const [error, setError] = useState("")
+
+  const validate = (val: string) => {
+    if (!val) return "Email is required"
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!regex.test(val)) return "Please enter a valid email address"
+    return ""
+  }
+
+  const handleBlur = () => {
+    setError(validate(value))
+  }
+
+  const handleChange = (val: string) => {
+    setValue(val)
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
@@ -63,23 +80,35 @@ export default function LoginPage() {
 
         {/* === Form === */}
         <div className="space-y-8 mt-8">
-          <div className="relative">
-            <Input
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="h-10 text-sm pr-10"
-            />
-            {username && (
-              <button
-                type="button"
-                onClick={() => setUsername("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-black"
-              >
-                <X size={16} />
-              </button>
-            )}
-          </div>
+            <div className="space-y-1">
+              <div className="relative">
+                <Input
+                  type="text"
+                  inputMode="email"   // 👈 mobile keyboard optimization
+                  autoComplete="email"
+                  value={value}
+                  onChange={(e) => handleChange(e.target.value)}
+                  onBlur={handleBlur}
+                  placeholder="Enter your email"
+                  className={error ? "border-red-500 focus-visible:ring-red-500 pr-10 h-10" : "pr-10 h-10"}
+                />
+
+                {value && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setValue("")
+                      setError("")
+                      setTouched(false)
+                    }}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  >
+                    <X size={16} />
+                  </button>
+                )}
+              </div>
+            </div>
+
           {/* Password */}
            <div className="relative">
             <Input
