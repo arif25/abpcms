@@ -58,7 +58,7 @@ export default function LoginForm() {
             onClick={handleLogin}
             className="w-full h-11 bg-slate-900 hover:bg-slate-800 text-white"
           >
-            Login
+            Sorter Manager
           </Button>
 
           {/* Google Login */}
@@ -77,7 +77,7 @@ export default function LoginForm() {
               onClick={() => navigate("/cmslogin")}
               className="underline cursor-pointer text-gray-700"
             >
-              Sign up
+              Sandesh Login
             </span>
           </p>
         </CardContent>

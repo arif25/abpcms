@@ -12,15 +12,15 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
-      <div className="w-full max-w-sm bg-white p-6 space-y-6">
+      <div className="w-full max-w-sm bg-white p-6">
 
         {/* Logo + Title */}
-        <div className="flex flex-col items-center space-y-2">
+        <div className="flex flex-col items-center">
             <img src={logo} alt="logo" className="w-[163px] object-contain" />
         </div>
 
         {/* Toggle */}
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-14">
           <div className="flex bg-white-200 border rounded-md overflow-hidden text-sm">
            <Button
                 onClick={() => setMode("ABP")}
@@ -39,19 +39,19 @@ export default function LoginPage() {
         </div>
 
         {/* Google Login */}
-        <Button className="w-full bg-slate-900 hover:bg-slate-800">
+        <Button className="w-full bg-slate-900 hover:bg-slate-800 mt-10">
           Login via Google
         </Button>
 
         {/* Divider */}
-        <div className="flex items-center gap-2 text-sm text-gray-500">
+        <div className="flex items-center gap-2 text-sm text-gray-500 mt-6">
           <Separator className="flex-1" />
           <span>Or continue with</span>
           <Separator className="flex-1" />
         </div>
 
         {/* Form */}
-        <div className="space-y-4">
+        <div className="space-y-4 mt-8">
           <Input placeholder="Username" />
           <Input type="password" placeholder="Password" />
         </div>
