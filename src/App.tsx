@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import LoginForm from "./pages/login"
 
 import CMSlogin from "./pages/CMSlogin"
+import AdPartner from "./pages/adPartner"
 
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/layout/app-sidebar"
@@ -34,7 +35,8 @@ function App() {
         {/* <Route path="/" element={<LoginForm />} /> */}
         <Route path="/" element={<CMSlogin />} />  
         <Route path="/cmslogin" element={<CMSlogin />} />  
-        <Route path="/dashboard" element={<Layout />} />
+        <Route path="/sortermanager" element={<Layout />} />
+        <Route path="/adpartner" element={<AdPartner />} />
         <Route path="/animation" element={<RainbowAnimation />} />
       </Routes>
     </BrowserRouter>

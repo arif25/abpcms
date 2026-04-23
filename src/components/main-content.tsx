@@ -28,7 +28,7 @@ import {
 import {
   ChevronRight,
   History,
-  Lock,
+  Lock,  
   MoreVertical,
   Pencil,
   Plus,
@@ -217,23 +217,7 @@ function StatusBadge({
   locked?: boolean
 }) {
   return (
-    <div className="flex items-center gap-2">
-      {status === "active" ? (
-        <span className="inline-flex h-7 items-center rounded-full border border-emerald-500 px-3 text-xs font-medium text-emerald-600">
-          Active
-        </span>
-      ) : (
-        <span className="inline-flex h-7 items-center rounded-full border border-zinc-300 px-3 text-xs font-medium text-zinc-500">
-          Inactive
-        </span>
-      )}
-
-      {locked ? (
-        <span className="inline-flex h-7 items-center rounded-full border border-red-500 px-3 text-xs font-medium text-red-500">
-          Lock
-        </span>
-      ) : null}
-    </div>
+   <></>
   )
 }
 
