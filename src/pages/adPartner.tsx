@@ -296,7 +296,7 @@ const adPartner = () => {
 
                                         {/* openMenuIndex */}
                                         {openMenuIndex === i && (
-                                            <div className="absolute right-0 mt-8 cursor-pointer w-32 bg-white border rounded-md shadow-lg z-50">
+                                            <div className="absolute right-0 mt-8 cursor-pointer w-32 bg-white border rounded-md shadow-lg z-50 text-center">
                                             <p
                                                 onClick={() => {
                                                 setOpenEditRecords(true);
@@ -310,41 +310,37 @@ const adPartner = () => {
                                                 onClick={() =>
                                                     setOpenDeleteRecords(true)
                                                 }
-                                                className="px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer">
+                                                className="px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer border-t">
                                                 Delete
                                             </p>
                                             {/* Modal + Delete Records */}
                                             <Dialog open={openDeleteRecords} onOpenChange={setOpenDeleteRecords}>
-                                            <DialogOverlay className="bg-black/40 backdrop-blur-sm" />
+                                                <DialogOverlay className="bg-black/40" />
 
-                                            <DialogContent className="sm:max-w-[420px] rounded-xl p-8">
-                                                <DialogHeader className="space-y-2">
-                                                <DialogTitle className="text-lg font-semibold text-gray-900">
-                                                    Are you sure you want to delete this?
-                                                </DialogTitle>
+                                                <DialogContent className="sm:max-w-[480px] rounded-xl p-8 [&>button]:hidden">
+                                                    <DialogHeader className="space-y-2">
+                                                    <DialogTitle className="text-lg font-semibold text-gray-900">
+                                                        Are you sure you want to delete this?
+                                                    </DialogTitle>
 
-                                                <p className="text-sm text-gray-500">
-                                                    You won't be able to revert this!
-                                                </p>
-                                                </DialogHeader>
+                                                    <p className="text-sm text-gray-500">
+                                                        You won't be able to revert this!
+                                                    </p>
+                                                    </DialogHeader>
 
-                                                {/* Buttons */}
-                                                <div className="flex justify-end gap-3 mt-6">
-                                                <Button
-                                                    variant="outline"
-                                                    className="px-4 py-2 rounded-md"
-                                                    onClick={() => setOpenDeleteRecords(false)}
-                                                >
-                                                    Cancel
-                                                </Button>
+                                                    <div className="flex justify-end gap-3 mt-6">
+                                                    <Button
+                                                        variant="outline"
+                                                        onClick={() => setOpenDeleteRecords(false)}
+                                                    >
+                                                        Cancel
+                                                    </Button>
 
-                                                <Button
-                                                    className="bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded-md"
-                                                >
-                                                    Yes, Delete
-                                                </Button>
-                                                </div>
-                                            </DialogContent>
+                                                    <Button className="bg-gray-900 hover:bg-gray-800 text-white">
+                                                        Yes, Delete
+                                                    </Button>
+                                                    </div>
+                                                </DialogContent> 
                                             </Dialog>
                                             {/*  */}
                                             </div>
