@@ -14,7 +14,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { MoreVertical, Pencil } from "lucide-react";
+import { MoreVertical, Pencil, Trash } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -156,7 +156,7 @@ const adPartner = () => {
                             </Button>
                             {/* Modal + new Records */}
                             <Dialog open={openNewRecords} onOpenChange={setOpenNewRecords}>
-                            <DialogContent className="sm:max-w-[420px]">
+                            <DialogContent className="sm:max-w-[470px]">
                             <DialogHeader>
                                 <DialogTitle>Add New Records</DialogTitle>
                             </DialogHeader>
@@ -240,7 +240,7 @@ const adPartner = () => {
                                     </Button>
                                     {/* Modal + Edit Records */}
                                     <Dialog open={openEditRecords} onOpenChange={setOpenEditRecords}>
-                                        <DialogContent className="sm:max-w-[420px]">
+                                        <DialogContent className="sm:max-w-[420px]"> 
                                         <DialogHeader>
                                             <DialogTitle>Edit Records</DialogTitle>
                                         </DialogHeader>
@@ -251,7 +251,7 @@ const adPartner = () => {
                                         <label className="text-sm font-medium">
                                             Ad Partner Name
                                         </label>
-                                        <Input value='Video ad Partner' className="mt-1" />
+                                        <Input defaultValue='Video ad Partner' className="mt-1" />
                                         </div>
 
                                         {/* Status */}
@@ -296,23 +296,24 @@ const adPartner = () => {
 
                                         {/* openMenuIndex */}
                                         {openMenuIndex === i && (
-                                            <div className="absolute right-0 mt-8 cursor-pointer w-32 bg-white border rounded-md shadow-lg z-50 text-center">
-                                            <p
+                                            <div className="absolute right-0 mt-8 cursor-pointer w-32 bg-white border rounded-md shadow-lg z-50 text-left">
+                                            <div
                                                 onClick={() => {
                                                 setOpenEditRecords(true);
                                                 setOpenMenuIndex(null);
                                                 }}
-                                                className="px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer"
-                                            >
-                                                Edit
-                                            </p>
-                                            <p 
+                                                className="flex px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer">
+                                                <Pencil size={14} /> 
+                                                <span> Edit</span>
+                                            </div>
+                                            <div 
                                                 onClick={() =>
                                                     setOpenDeleteRecords(true)
                                                 }
-                                                className="px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer border-t">
-                                                Delete
-                                            </p>
+                                                className="flex px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer border-t">
+                                                <Trash size={14} /> 
+                                                <span> Delete</span>
+                                            </div>
                                             {/* Modal + Delete Records */}
                                             <Dialog open={openDeleteRecords} onOpenChange={setOpenDeleteRecords}>
                                                 <DialogOverlay className="bg-black/40" />
