@@ -2,10 +2,6 @@ import { AppSidebar } from '@/components/layout/app-sidebar'
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
 import { ChevronRight } from 'lucide-react'
 import React from 'react'
-
-
-
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,6 +15,13 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { MoreVertical, Pencil } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Switch } from "@/components/ui/switch";
 
 const data = [
   {
@@ -95,16 +98,22 @@ const data = [
   },
 ];
 
-
 const adPartner = () => {
+
+    const [openNewRecords, setOpenNewRecords] = useState(false);
+    const [openEditRecords, setOpenEditRecords] = useState(false);
+    const [openDeleteRecords, setOpenDeleteRecords] = useState(false);
+    const [active, setActive] = useState(true);
+
+    const [openMenuIndex, setOpenMenuIndex] = useState(null);
+
     const [search, setSearch] = useState("");
   return (
     <SidebarProvider>
         <div className="flex h-screen w-full overflow-hidden bg-white">
             <AppSidebar />
             <SidebarInset className="bg-white">
-                <main className=" h-full overflow-hidden">
-                    
+                <main className=" h-full overflow-hidden">                    
                     <div className="border-b bg-white ">
                         <div className="flex h-14 items-center px-6 ">
                             <div className="flex items-center gap-3">
@@ -121,25 +130,77 @@ const adPartner = () => {
                             </div>
                         </div>
                     </div>
-
                      <div className="p-6 space-y-4 bg-white">
                         {/* Top Bar */}
-                        <div className="flex justify-between items-center border-b pb-4">
-                            <div className="flex gap-2 border rounded-sm">
-                                <Input
-                                    placeholder="Search and filter by Page URL, Name"
-                                    value={search}
-                                    onChange={(e) => setSearch(e.target.value)}
-                                    className="w-[260px] border-0 h-9"
-                                />
-                                <Button variant="secondary" className='h-9'>Search</Button>
+                       <div className="flex flex-col gap-3 border-b pb-4 sm:flex-row sm:items-center sm:justify-between">  
+                            {/* Search Section */}
+                            <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto sm:flex-1">
+                                <div className="flex border rounded-md w-[300px] sm:w-[330px]">
+                                    <Input
+                                        placeholder="Search and filter by Page URL, Name"
+                                        value={search}
+                                        onChange={(e) => setSearch(e.target.value)}
+                                        className="w-[260px] sm:w-[270px] border-0 h-9"
+                                    />
+                                    <Button variant="secondary" className="h-9 ml-2 shrink-0">
+                                        Search
+                                    </Button>
+                                </div>
+                            </div>
+                            {/* Action Button */}
+                            <Button
+                                onClick={() => setOpenNewRecords(true)} 
+                                className="gap-2 rounded-sm h-9 bg-[#F1F5F9] text-black w-full sm:w-auto sm:shrink-0">
+                                + New Records
+                            </Button>
+                            {/* Modal + new Records */}
+                            <Dialog open={openNewRecords} onOpenChange={setOpenNewRecords}>
+                            <DialogContent className="sm:max-w-[420px]">
+                            <DialogHeader>
+                                <DialogTitle>Add New Records</DialogTitle>
+                            </DialogHeader>
+
+                            <div className="space-y-4 mt-2">
+                            {/* Input */}
+                            <div>
+                            <label className="text-sm font-medium">
+                                Ad Partner Name
+                            </label>
+                            <Input placeholder="Ad Partner Name" className="mt-1" />
                             </div>
 
-                            <Button className="gap-2 rounded-sm h-9 bg-[#F1F5F9] text-black w-[144px]">
-                            + New Records
-                            </Button>
-                        </div>
+                            {/* Status */}
+                            <div>
+                            <label className="text-sm font-medium">Status</label>
+                            <div className="flex items-center gap-2 mt-2">
+                            <Switch
+                                checked={active}
+                                onCheckedChange={setActive}
+                                className="data-[state=checked]:bg-green-600 data-[state=unchecked]:bg-gray-300"
+                            />
+                            <span className="text-sm font-medium">
+                                {active ? "Active" : "Inactive"}
+                            </span>
+                            </div>
+                            </div>
 
+                                {/* Buttons */}
+                                <div className="flex justify-end gap-2 pt-4">
+                                <Button
+                                    variant="outline"
+                                    onClick={() => setOpenNewRecords(false)}
+                                >
+                                    Reset
+                                </Button>
+                                <Button className="bg-black text-white">
+                                    Save
+                                </Button>
+                                </div>
+                            </div>
+                            </DialogContent>
+                            </Dialog>
+                            {/*  */}
+                        </div>
                         {/* Table */}
                         <div className=" overflow-hidden">
                             <Table>
@@ -152,12 +213,10 @@ const adPartner = () => {
                                 <TableHead className="text-right">Action</TableHead>
                                 </TableRow>
                             </TableHeader>
-
                             <TableBody>
                                 {data.map((item, i) => (
                                 <TableRow key={i}>
                                     <TableCell>{item.name}</TableCell>
-
                                     <TableCell>
                                       <Badge
                                         className={
@@ -170,25 +229,124 @@ const adPartner = () => {
                                         {item.status}
                                         </Badge>
                                     </TableCell>
-
                                     <TableCell>{item.updated}</TableCell>
                                     <TableCell>{item.by}</TableCell>
-
                                     <TableCell className="text-right flex justify-end gap-2">
-                                    <Button variant="outline" size="sm" className="gap-1">
+                                    <Button 
+                                        onClick={() => setOpenEditRecords(true) }
+                                        variant="outline" size="sm" className="gap-1">
                                         <Pencil size={14} /> Edit
                                     </Button>
+                                    {/* Modal + Edit Records */}
+                                    <Dialog open={openEditRecords} onOpenChange={setOpenEditRecords}>
+                                        <DialogContent className="sm:max-w-[420px]">
+                                        <DialogHeader>
+                                            <DialogTitle>Edit Records</DialogTitle>
+                                        </DialogHeader>
 
-                                    <Button variant="ghost" size="icon">
+                                        <div className="space-y-4 mt-2">
+                                        {/* Input */}
+                                        <div>
+                                        <label className="text-sm font-medium">
+                                            Ad Partner Name
+                                        </label>
+                                        <Input value='Video ad Partner' className="mt-1" />
+                                        </div>
+
+                                        {/* Status */}
+                                        <div>
+                                        <label className="text-sm font-medium">Status</label>
+                                        <div className="flex items-center gap-2 mt-2">
+                                        <Switch
+                                            checked={active}
+                                            onCheckedChange={setActive}
+                                            className="data-[state=checked]:bg-green-600 data-[state=unchecked]:bg-gray-300"
+                                        />
+                                        <span className="text-sm font-medium">
+                                            {active ? "Active" : "Inactive"}
+                                        </span>
+                                        </div>
+                                        </div>
+
+                                            {/* Buttons */}
+                                            <div className="flex justify-end gap-2 pt-4">
+                                            <Button
+                                                variant="outline"
+                                                onClick={() => setOpenEditRecords(false)}
+                                            >
+                                                Reset
+                                            </Button>
+                                            <Button className="bg-black text-white">
+                                                Save
+                                            </Button>
+                                            </div>
+                                        </div>
+                                        </DialogContent>
+                                    </Dialog>
+                                    {/*  */}
+                                    <Button 
+                                        className='cursor-pointer'
+                                         onClick={() =>
+                                            setOpenMenuIndex(openMenuIndex === i ? null : i)
+                                        }
+                                        variant="ghost" size="icon">
                                         <MoreVertical size={16} />
                                     </Button>
+                                        {openMenuIndex === i && (
+                                        <div className="absolute right-0 mt-8 cursor-pointer w-32 bg-white border rounded-md shadow-lg z-50">
+                                        <p
+                                            onClick={() => {
+                                            setOpenEditRecords(true);
+                                            setOpenMenuIndex(null);
+                                            }}
+                                            className="px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer"
+                                        >
+                                            Edit
+                                        </p>
+                                        <p 
+                                            onClick={() =>
+                                                setOpenDeleteRecords(true)
+                                            }
+                                            className="px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer">
+                                            Delete
+                                        </p>
+                                        {/* Modal + Delete Records */}
+                                        <Dialog open={openDeleteRecords} onOpenChange={setOpenDeleteRecords}>
+                                            <DialogContent className="sm:max-w-[420px]">
+                                            <DialogHeader>
+                                                <DialogTitle>Are you sure you want to delete this?</DialogTitle>
+                                            </DialogHeader>
+
+                                            <div className="space-y-4 mt-2">
+                                            {/* Status */}
+                                            <div>
+                                            <label className="text-sm font-medium">You won't be able to revert this!</label>
+                                            </div>
+
+                                                {/* Buttons */}
+                                                <div className="flex justify-end gap-2 pt-4">
+                                                <Button
+                                                    variant="outline"
+                                                    onClick={() => setOpenEditRecords(false)}
+                                                >
+                                                    Cancel
+                                                </Button>
+                                                <Button className="bg-black text-white">
+                                                    Yes, Delete
+                                                </Button>
+                                                </div>
+                                            </div>
+                                            </DialogContent>
+                                        </Dialog>
+                                        {/*  */}
+                                        </div>
+                                    )}
                                     </TableCell>
                                 </TableRow>
                                 ))}
                             </TableBody>
                             </Table>
                         </div>
-
                         {/* Pagination */}
                         <div className="border-t pt-4 flex justify-center items-center gap-2">
                             <Button variant="ghost" size="sm">
@@ -210,7 +368,6 @@ const adPartner = () => {
                             </Button>
                         </div>
                     </div>
-
                 </main>
             </SidebarInset>
         </div>
@@ -218,4 +375,4 @@ const adPartner = () => {
   )
 }
 
-export default adPartner
+export default adPartner 
