@@ -315,32 +315,36 @@ const adPartner = () => {
                                             </p>
                                             {/* Modal + Delete Records */}
                                             <Dialog open={openDeleteRecords} onOpenChange={setOpenDeleteRecords}>
-                                                <DialogOverlay className="bg-black/50 backdrop-blur-none" />
-                                                <DialogContent className="sm:max-w-[420px]">
-                                                <DialogHeader>
-                                                    <DialogTitle>Are you sure you want to delete this?</DialogTitle>
+                                            <DialogOverlay className="bg-black/40 backdrop-blur-sm" />
+
+                                            <DialogContent className="sm:max-w-[420px] rounded-xl p-18">
+                                                <DialogHeader className="space-y-2">
+                                                <DialogTitle className="text-lg font-semibold text-gray-900">
+                                                    Are you sure you want to delete this?
+                                                </DialogTitle>
+
+                                                <p className="text-sm text-gray-500">
+                                                    You won't be able to revert this!
+                                                </p>
                                                 </DialogHeader>
 
-                                                <div className="space-y-4 mt-2">
-                                                {/* Status */}
-                                                <div>
-                                                <label className="text-sm font-medium">You won't be able to revert this!</label>
-                                                </div>
+                                                {/* Buttons */}
+                                                <div className="flex justify-end gap-3 mt-6">
+                                                <Button
+                                                    variant="outline"
+                                                    className="px-4 py-2 rounded-md"
+                                                    onClick={() => setOpenDeleteRecords(false)}
+                                                >
+                                                    Cancel
+                                                </Button>
 
-                                                    {/* Buttons */}
-                                                    <div className="flex justify-end gap-2 pt-4">
-                                                    <Button
-                                                        variant="outline"
-                                                        onClick={() => setOpenEditRecords(false)}
-                                                    >
-                                                        Cancel
-                                                    </Button>
-                                                    <Button className="bg-black text-white">
-                                                        Yes, Delete
-                                                    </Button>
-                                                    </div>
+                                                <Button
+                                                    className="bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded-md"
+                                                >
+                                                    Yes, Delete
+                                                </Button>
                                                 </div>
-                                                </DialogContent>
+                                            </DialogContent>
                                             </Dialog>
                                             {/*  */}
                                             </div>
