@@ -317,7 +317,7 @@ const adPartner = () => {
                                             <Dialog open={openDeleteRecords} onOpenChange={setOpenDeleteRecords}>
                                             <DialogOverlay className="bg-black/40 backdrop-blur-sm" />
 
-                                            <DialogContent className="sm:max-w-[420px] rounded-xl p-18">
+                                            <DialogContent className="sm:max-w-[420px] rounded-xl p-8">
                                                 <DialogHeader className="space-y-2">
                                                 <DialogTitle className="text-lg font-semibold text-gray-900">
                                                     Are you sure you want to delete this?
