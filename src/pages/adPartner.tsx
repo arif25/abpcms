@@ -235,8 +235,9 @@ const adPartner = () => {
                                     <TableCell className="text-right flex justify-end gap-2">
                                     <Button 
                                         onClick={() => setOpenEditRecords(true) }
-                                        variant="outline" size="sm" className="gap-1">
-                                        <Pencil size={14} /> Edit
+                                        variant="outline" size="sm" className="gap-2 items-center">
+                                        <Pencil size={13} /> 
+                                        <span className='text-sm'> Edit</span>
                                     </Button>
                                     {/* Modal + Edit Records */}
                                     <Dialog open={openEditRecords} onOpenChange={setOpenEditRecords}>
@@ -302,15 +303,15 @@ const adPartner = () => {
                                                 setOpenEditRecords(true);
                                                 setOpenMenuIndex(null);
                                                 }}
-                                                className="flex px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer">
-                                                <Pencil size={14} /> 
-                                                <span> Edit</span>
+                                                className="flex items-center gap-3 px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer">
+                                                <Pencil size={13} /> 
+                                                <span className='text-sm'> Edit</span>
                                             </div>
                                             <div 
                                                 onClick={() =>
                                                     setOpenDeleteRecords(true)
                                                 }
-                                                className="flex px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer border-t">
+                                                className="flex items-center gap-3 px-3 py-2 text-sm hover:bg-gray-100 cursor-pointer border-t">
                                                 <Trash size={14} /> 
                                                 <span> Delete</span>
                                             </div>
