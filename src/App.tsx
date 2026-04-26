@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import LoginForm from "./pages/login"
+import LoginForm from "./pages/sample"
 
 import CMSlogin from "./pages/CMSlogin"
-import AdPartner from "./pages/adPartner"
+import AdPartner from "./pages/adPartner--"
 
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/layout/app-sidebar"
