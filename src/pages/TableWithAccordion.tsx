@@ -7,19 +7,10 @@ import { Progress } from "@/components/ui/progress"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { CheckCircle2, PlayCircle, FileText, HelpCircle, Clock, Play } from "lucide-react"
 
-
-
-
 import { AppSidebar } from '@/components/layout/app-sidebar'
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
 import { ChevronRight, MoreVertical, Pencil, Trash } from 'lucide-react'
 import { Badge } from "@/components/ui/badge"
-
-
-
-
-
-
 
 const curriculum = [
   {
@@ -109,10 +100,12 @@ export default function CourseAccordionTable() {
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-3 px-6 text-sm font-medium text-muted-foreground ">
+                      <div className="flex justify-between px-6 text-sm font-medium text-muted-foreground ">
                         <span>Lesson</span>
-                        <span className="text-center">Type</span>
-                        <span className="text-right">Duration</span>
+                        <div className="flex w-[500px] pr-20 items-center gap-36 text-sm text-gray-500">
+                          <span className="text-center">Type</span>
+                          <span className="text-right">Duration</span>
+                        </div>
                       </div>
 
                       <Accordion type="multiple" className="w-full ">
@@ -162,27 +155,27 @@ export default function CourseAccordionTable() {
                                   <div className="flex items-center gap-3">
                                     <CheckCircle2 className="text-green-500 w-5 h-5" />
                                     <span className="text-sm font-medium text-gray-800">
-                                      Welcome to the Course
+                                        {lesson.title}
                                     </span>
                                   </div>
 
                                   {/* Right Section */}
-                                  <div className="flex items-center gap-6 text-sm text-gray-500">
+                                  <div className="flex justify-between w-[500px] pr-20 items-center gap-6 text-sm text-gray-500">
                                     
                                     <div className="flex items-center gap-1">
                                       <Play className="w-4 h-4" />
-                                      <span>Video</span>
+                                      <span>{lesson.type} </span>
                                     </div>
 
                                     <div className="flex items-center gap-1">
                                       <Clock className="w-4 h-4" />
-                                      <span>5:30</span>
+                                      <span>{lesson.duration}</span>
                                     </div>
 
                                     <Button variant="ghost" className="text-sm">
                                       Review
                                     </Button>
-                                  </div>
+                                  </div>  
                                 </div>
                                 {/*  */}
                                 </div>
