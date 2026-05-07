@@ -52,7 +52,7 @@ export default function LoginPage() {
               <Button
                 key={item}
                 onClick={() => setMode(item as "ABP" | "TT")}
-                className={`w-[80px] h-9 font-semibold rounded-none border-0 transition
+                className={`w-[80px] h-9 font-semibold rounded-none border-0 transition cursor-pointer
                   ${
                     mode === item
                       ? "bg-gray-200 text-black"
@@ -68,7 +68,7 @@ export default function LoginPage() {
         {/* Google Login */}
         <Button
           onClick={() => navigate("/adpartner")}
-          className="w-full h-10 mt-10 bg-slate-900 hover:bg-slate-800 text-white"
+          className="w-full h-10 mt-10 bg-slate-900 hover:bg-slate-800 text-white cursor-pointer"
         >
           Login with Google
         </Button>
@@ -131,8 +131,8 @@ export default function LoginPage() {
 
         {/* Actions */}
         <Button
-          onClick={() => navigate("/sortermanager")}
-          className="w-full h-10 mt-10 bg-gray-100 hover:bg-gray-300 text-gray-900 font-semibold"
+          onClick={() => navigate("/tablewithaccordion")}
+          className="w-full h-10 mt-10 bg-gray-100 hover:bg-gray-300 text-gray-900 font-semibold cursor-pointer"
         >
           Login as User
         </Button>
