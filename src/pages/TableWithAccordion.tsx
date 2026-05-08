@@ -41,6 +41,36 @@ const curriculum = [
       { title: "Common Patterns", type: "video", duration: "22:10", done: false },
       { title: "Module Assessment", type: "quiz", duration: "15 min", done: false }
     ]
+  },
+  
+  {
+    title: "Getting Started",
+    subtitle: "Introduction and setup",
+    completed: true,
+    progress: 100,
+    time: 35,
+    lessons: [
+      { title: "Welcome to the Course", type: "video", duration: "5:30", done: true },
+      { title: "Course Overview & Goals", type: "reading", duration: "8 min", done: true },
+      { title: "Setting Up Your Environment", type: "video", duration: "12:45", done: true },
+      { title: "Setting Up Your Environment", type: "video", duration: "12:45", done: true },
+      { title: "Knowledge Check", type: "quiz", duration: "10 min", done: true },
+      { title: "Welcome to the Course", type: "video", duration: "5:30", done: true },
+    ]
+  },
+  {
+    title: "Core Fundamentals",
+    subtitle: "Essential concepts and patterns",
+    completed: false,
+    progress: 40,
+    time: 95,
+    lessons: [
+      { title: "Understanding the Basics", type: "video", duration: "18:20", done: true },
+      { title: "Deep Dive: Key Concepts", type: "reading", duration: "15 min", done: true },
+      { title: "Hands-on Practice", type: "exercise", duration: "25 min", done: false, active: true },
+      { title: "Common Patterns", type: "video", duration: "22:10", done: false },
+      { title: "Module Assessment", type: "quiz", duration: "15 min", done: false }
+    ]
   }
 ]
 
@@ -74,11 +104,11 @@ export default function CourseAccordionTable() {
                   <span className="text-sm font-semibold">Ad Partner</span>
                 </div>
 
-                <div className="w-full">
+                <div className="w-full  overflow-y-auto">
                   <Card className="border-0 shadow-none ring-0">
                     <CardContent className="p-6 space-y-6 border-0 shadow-none">
                       <div className="flex justify-between items-center">
-                        <div>
+                        <div className="ml-6">
                           <h2 className="text-xl font-semibold">Course Curriculum</h2>
                           <p className="text-sm text-muted-foreground">4 modules · 18 lessons</p>
                         </div>
@@ -108,10 +138,10 @@ export default function CourseAccordionTable() {
                         </div>
                       </div>
 
-                      <Accordion type="multiple" className="w-full ">
+                      <Accordion type="multiple" className="w-full" defaultValue={["item-0"]}>
                         {curriculum.map((module, i) => (
                           <AccordionItem key={i} value={`item-${i}`} className="px-4">
-                            <AccordionTrigger className="py-4">
+                            <AccordionTrigger className="py-4 hover:no-underline [&>svg]:order-first [&>svg]:mr-1 [&>svg]:self-start [&>svg]:mt-6">
                               <div className="flex justify-between w-full items-center">
                                 <div>
                                      <div className="flex items-start justify-between p-4 rounded-xl hover:bg-muted/50 transition">      
@@ -123,17 +153,16 @@ export default function CourseAccordionTable() {
                                             {module.completed ? "Complete" : ""}
                                           </Badge>
                                         </div>
-                                        <p className="text-sm text-muted-foreground">
+                                        <p className="text-sm text-muted-foreground">  
                                           {module.subtitle}
                                         </p>
                                       </div>
                                     </div>
-
                                 </div>
 
                                 <div className="w-62 flex items-center justify-between gap-4"> 
-                                  <div className="text-sm">
-                                      <p className="font-medium">33% complete</p>
+                                  <div className="text-sm hover:no-underline text-right">
+                                      <p className="font-medium">4/4 lessons</p>
                                       <p className="text-muted-foreground text-xs">
                                        ~ { module.time } min
                                       </p>
